@@ -149,6 +149,7 @@ function minimize(elementId, taskBarId) {
     // change opacity of element to minimize to 0 so it disappears
     document.getElementById(elementId).style.opacity = "0";
     // change border style to outset
+    console.log(taskBarId);
     document.getElementById(taskBarId).style.borderStyle = "outset";
 
     //disable clickable buttons on window.
