@@ -174,7 +174,7 @@ function newCMD() {
     task.innerHTML = 'Command Prompt ' + cmdNum.toString();
     task.id = 'cmdline' + cmdNum.toString() + 'task';
     task.onclick = function() {
-        bringUpWindow('cmdline' + cmdNum.toString(), 'cmdline' + cmdNum.toString() + 'task');
+        bringUpWindow('cmdline' + cmdNum.toString(), 'cmdline' + cmdNum.toString() + 'task', cmdLineInput);
     };
     document.getElementById('programs').appendChild(task);
 }

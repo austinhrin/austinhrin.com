@@ -1,4 +1,4 @@
-var debugLogging = true;
+var debugLogging = false;
 
 function addTagsLoop(jsonData, parentId, idNum, idFilter) {
     idNum = idNum.toString();
@@ -18,7 +18,7 @@ function addTagsLoop(jsonData, parentId, idNum, idFilter) {
                     // check to see if id includes idFilter
                     if (jsonData[key][tagAttrArray[tag]].indexOf(idFilter) > -1 && tagAttrArray[tag] == 'id') {
                         attrVal = jsonData[key][tagAttrArray[tag]];
-                        attrVal = attrVal.replace(idFilter, idFilter + idNum, 'g');
+                        attrVal = attrVal.split(idFilter).join(idFilter + idNum);
                         newParentId = attrVal;
                         if (attrVal !== (idFilter + idNum)) {
                             // attrVal = attrVal + idNum;
@@ -32,7 +32,7 @@ function addTagsLoop(jsonData, parentId, idNum, idFilter) {
                 } else if (jsonData[key][tagAttrArray[tag]].indexOf(idFilter) > -1 && tagAttrArray[tag] == 'onClick') {
                     attrVal = jsonData[key][tagAttrArray[tag]];
                     attrVal.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                    attrVal = attrVal.replace(idFilter, idFilter + idNum, 'g');
+                    attrVal = attrVal.split(idFilter).join(idFilter + idNum);
                 } else if (tagAttrArray[tag] === 'innerHTML' && jsonData[key]['id'] === 'titletext') {
                     // add number to title of program
                     attrVal = jsonData[key][tagAttrArray[tag]] + ' ' + idNum;
@@ -44,6 +44,9 @@ function addTagsLoop(jsonData, parentId, idNum, idFilter) {
                     newTag.onclick = function() {
                         eval(attrVal)
                     };
+                    if (debugLogging == true) {
+                        console.log(attrVal);
+                    }
                 } else if (tagAttrArray[tag] === 'contenteditable') {
                     // for some reason this does not work in with newTag[tagAttrArray[tag]]????
                     newTag.contentEditable = attrVal;
