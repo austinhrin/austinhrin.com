@@ -2,7 +2,9 @@ var debugLogging = true;
 
 function addTagsLoop(jsonData, parentId, idNum, idFilter) {
     idNum = idNum.toString();
-    console.log('idNum: "' + idNum + '"');
+    if (debugLogging == true) {
+        console.log('idNum: "' + idNum + '"');
+    }
     for (var key in jsonData) {
         var newTag = document.createElement(jsonData[key].tagName);
 
@@ -18,23 +20,19 @@ function addTagsLoop(jsonData, parentId, idNum, idFilter) {
                         attrVal = jsonData[key][tagAttrArray[tag]];
                         attrVal = attrVal.replace(idFilter, idFilter + idNum, 'g');
                         newParentId = attrVal;
-                        // console.log(newParentId);
                         if (attrVal !== (idFilter + idNum)) {
                             // attrVal = attrVal + idNum;
                         }
                     } else if (tagAttrArray[tag] == 'id') {
                         attrVal = jsonData[key][tagAttrArray[tag]] + idNum;
                         newParentId = attrVal;
-                        // console.log(newParentId);
                     } else {
                         attrVal = jsonData[key][tagAttrArray[tag]] + idNum;
                     }
                 } else if (jsonData[key][tagAttrArray[tag]].indexOf(idFilter) > -1 && tagAttrArray[tag] == 'onClick') {
                     attrVal = jsonData[key][tagAttrArray[tag]];
-                    // console.log(attrVal);
                     attrVal.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
                     attrVal = attrVal.replace(idFilter, idFilter + idNum, 'g');
-                    // console.log(attrVal);
                 } else if (tagAttrArray[tag] === 'innerHTML' && jsonData[key]['id'] === 'titletext') {
                     // add number to title of program
                     attrVal = jsonData[key][tagAttrArray[tag]] + ' ' + idNum;
@@ -64,7 +62,9 @@ function addTagsLoop(jsonData, parentId, idNum, idFilter) {
             // FIX THIS???? does this do anything or just break stuff????? LOL
             // parentId = attrVal.replace(idFilter, idFilter + idNum);
             // }
-            console.log(parentId);
+            if (debugLogging == true) {
+                console.log(parentId);
+            }
             document.getElementById(parentId).appendChild(newTag);
         } else {
             document.body.appendChild(newTag);
@@ -246,7 +246,16 @@ function maximize(elementId, focusElementId) {
 }
 
 function focusApp(elemId, inputElemId) {
-    console.log('focusing app');
+    if (debugLogging == true) {
+        console.log('focusing app ' + elemId);
+    }
+    // unfocus all app windows
+    var programsContainer = document.getElementById('programsContainer');
+    var applications = programsContainer.querySelectorAll('.program');
+    applications.forEach(function(app) {
+        unfocusApp(app.id);
+    });
+    // focus app
     var elem = document.getElementById(elemId);
     elem.style.zIndex = '9999';
     var inputElem = document.getElementById(inputElemId);
@@ -364,7 +373,9 @@ function resizeElem(elemToResize) {
     function doDrag(e) {
         elemToResize.style.width = (startWidth + e.clientX - startX) + 'px';
         elemToResize.style.height = (startHeight + e.clientY - startY) + 'px';
-        console.log(startWidth, e, startX, elemToResize.style.width);
+        if (debugLogging == true) {
+            console.log(startWidth, e, startX, elemToResize.style.width);
+        }
     }
 
     function stopDrag(e) {

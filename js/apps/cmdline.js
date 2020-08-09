@@ -1,7 +1,7 @@
 var cmdJSON = [{
     'tagName': 'div',
     'id': 'cmdline',
-    'className': 'cmdline',
+    'className': 'cmdline program',
     'onClick': 'focusApp("cmdline", "cmdlineinput");',
     'children': [{
         'tagName': 'div',
