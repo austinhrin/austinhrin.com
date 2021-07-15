@@ -16,10 +16,10 @@ var startMenuJson = [{
     'tagName': 'br'
 }, {
     'tagName': 'button',
-    'title': 'Contact.exe',
+    'title': 'Links.exe',
     'type': 'button',
     'onClick': '',
-    'innerHTML': 'Contact.exe'
+    'innerHTML': 'Links.exe'
 }, {
     'tagName': 'br'
 }];

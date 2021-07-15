@@ -73,10 +73,10 @@ var cmdJSON = [{
 }];
 
 
-var starttext = "C:\\Desktop>Austin Hrin.bat\nRunning Austin Hrin.bat...\n\nHello, my name is Austin Hrin.\n\nI am a Full Stack Web Developer located in Pinellas County Florida.\n\n\nType one of the commands listed below for more information.\nAvailable commands:\nabout\ncontact\nC:\\Desktop>";
+var starttext = "C:\\Desktop>Austin Hrin.bat\nRunning Austin Hrin.bat...\n\nHello, my name is Austin Hrin.\n\nI am a Full Stack Web Developer located in Pinellas County Florida.\n\n\nType one of the commands listed below for more information.\nAvailable commands:\nabout\links\nC:\\Desktop>";
 
 var abouttext = "About me\n";
-var contactText = "LinkedIn:\nwww.linkedin.com/in/austinhrin\nmore coming soon!\n";
+var linksText = "LinkedIn:\nwww.linkedin.com/in/austinhrin\nmore coming soon!\n";
 var typingspeed = 50;
 var numCMDlineWindows = 0;
 
@@ -92,16 +92,16 @@ function about(cmdline, cmdlineInput) {
     }, typingspeed * abouttext.length);
 }
 
-function contact(cmdline, cmdlineInput) {
+function links(cmdline, cmdlineInput) {
     var cmdlineElem = document.getElementById(cmdline);
     var cmdlineInputElem = document.getElementById(cmdlineInput);
     cmdlineInputElem.innerHTML = "";
-    cmdlineElem.innerHTML += "contact";
+    cmdlineElem.innerHTML += "links";
     cmdlineElem.appendChild(document.createElement("br"));
-    commandline(contactText, cmdline);
+    commandline(linksText, cmdline);
     setTimeout(function() {
         cmdlineElem.innerHTML += "C:\\Desktop>";
-    }, typingspeed * contactText.length);
+    }, typingspeed * linksText.length);
 }
 
 function commandline(text, cmdline) {
@@ -155,8 +155,8 @@ function newCMD() {
             //cmdLineInputElem.click();
             if (cmdLineInputElem.innerHTML.indexOf('about') > -1) {
                 about(cmdLineText, cmdLineInput);
-            } else if (cmdLineInputElem.innerHTML.indexOf('contact') > -1) {
-                contact(cmdLineText, cmdLineInput);
+            } else if (cmdLineInputElem.innerHTML.indexOf('links') > -1) {
+                links(cmdLineText, cmdLineInput);
             }
         }
     });
