@@ -73,10 +73,10 @@ var cmdJSON = [{
 }];
 
 
-var starttext = "C:\\Desktop>Austin Hrin.bat\nRunning Austin Hrin.bat...\n\nHello, my name is Austin Hrin.\n\nI am a Full Stack Web Developer located in Pinellas County Florida.\n\n\nType one of the commands listed below for more information.\nAvailable commands:\nabout\links\nC:\\Desktop>";
+var starttext = "C:\\Desktop>Austin Hrin.bat\nRunning Austin Hrin.bat...\n\nHello, my name is Austin Hrin.\n\nI am a Full Stack Web Developer located in Pinellas County Florida.\n\n\nType one of the commands listed below for more information.\nAvailable commands:\nabout\nlinks\nC:\\Desktop>";
 
-var abouttext = "About me\n";
-var linksText = "LinkedIn:\nwww.linkedin.com/in/austinhrin\nmore coming soon!\n";
+var abouttext = "About me\nC:\\Desktop>";
+var linksText = "LinkedIn:\nwww.linkedin.com/in/austinhrin\nmore coming soon!\nC:\\Desktop>";
 var typingspeed = 50;
 var numCMDlineWindows = 0;
 
@@ -134,7 +134,7 @@ function newCMDline() {
 
 }
 
-function newCMD() {
+function newCMD(text) {
     numCMDlineWindows = numCMDlineWindows + 1;
     if (numCMDlineWindows <= 1) {
         var cmdNum = '';
@@ -162,7 +162,14 @@ function newCMD() {
     });
     cmdLineInputElem.focus();
     // add initial text to command prompt
-    commandline(starttext, cmdLineText);
+    if (text == 'linksText') {
+        text = linksText;
+    } else if (text == 'abouttext') {
+        text = abouttext;
+    } else if (text == 'starttext') {
+        text = starttext;
+    }
+    commandline(text, cmdLineText);
     // Make the DIV element resizeable. Function located in main.js
     resizeElem(document.getElementById(cmdAppElemId));
     // Make the DIV element draggagle. Function located in main.js

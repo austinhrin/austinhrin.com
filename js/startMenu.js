@@ -1,24 +1,21 @@
 var startMenuJson = [{
     'tagName': 'button',
     'type': 'button',
-    'title': 'Austin Hrin.bat',
-    'onClick': '',
+    'onClick': 'newCMD("starttext");',
     'innerHTML': 'Austin Hrin.bat'
 }, {
     'tagName': 'br'
 }, {
     'tagName': 'button',
-    'title': 'About.exe',
     'type': 'button',
-    'onClick': '',
+    'onClick': 'newCMD("abouttext");',
     'innerHTML': 'About.exe'
 }, {
     'tagName': 'br'
 }, {
     'tagName': 'button',
-    'title': 'Links.exe',
     'type': 'button',
-    'onClick': '',
+    'onClick': 'newCMD("linksText", null);',
     'innerHTML': 'Links.exe'
 }, {
     'tagName': 'br'

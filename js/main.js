@@ -41,11 +41,10 @@ function addTagsLoop(jsonData, parentId, idNum, idFilter) {
                 }
 
                 if (tagAttrArray[tag] === 'onClick') {
-                    newTag.onclick = function() {
-                        eval(attrVal)
-                    };
+                    // add onclick function to element
+                    newTag.setAttribute("onclick",attrVal);
                     if (debugLogging == true) {
-                        console.log(attrVal);
+                        console.log("onClick: " + attrVal);
                     }
                 } else if (tagAttrArray[tag] === 'contenteditable') {
                     // for some reason this does not work in with newTag[tagAttrArray[tag]]????

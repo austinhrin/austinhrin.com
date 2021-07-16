@@ -5,5 +5,5 @@ window.onload = function() {
     // create start menu
     addTagsLoop(startMenuJson, 'startmenu', false, false);
     // create initial command prompt
-    newCMD();
+    newCMD('starttext');
 };
