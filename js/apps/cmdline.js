@@ -75,8 +75,8 @@ var cmdJSON = [{
 
 var starttext = "C:\\Desktop>Austin Hrin.bat\nRunning Austin Hrin.bat...\n\nHello, my name is Austin Hrin.\n\nI am a Full Stack Web Developer located in Pinellas County Florida.\n\n\nType one of the commands listed below for more information.\nAvailable commands:\nabout\nlinks\nC:\\Desktop>";
 
-var abouttext = "About me\nC:\\Desktop>";
-var linksText = "LinkedIn:\nwww.linkedin.com/in/austinhrin\nmore coming soon!\nC:\\Desktop>";
+var abouttext = "About me\n";
+var linksText = "LinkedIn:\nwww.linkedin.com/in/austinhrin\nmore coming soon!\n";
 var typingspeed = 50;
 var numCMDlineWindows = 0;
 
@@ -88,7 +88,7 @@ function about(cmdline, cmdlineInput) {
     cmdlineElem.appendChild(document.createElement("br"));
     commandline(abouttext, cmdline);
     setTimeout(function() {
-        cmdlineElem.innerHTML += "C:\\Desktop>";
+        cmdlineElem.innerHTML += "\nC:\\Desktop>";
     }, typingspeed * abouttext.length);
 }
 
@@ -100,7 +100,7 @@ function links(cmdline, cmdlineInput) {
     cmdlineElem.appendChild(document.createElement("br"));
     commandline(linksText, cmdline);
     setTimeout(function() {
-        cmdlineElem.innerHTML += "C:\\Desktop>";
+        cmdlineElem.innerHTML += "\nC:\\Desktop>";
     }, typingspeed * linksText.length);
 }
 
