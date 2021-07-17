@@ -176,14 +176,16 @@ button {
     padding: 10px 10px;
 }
 
-#desktopicons ul li button {
+#desktopicons ul li button,
+#desktopicons ul li a {
     text-decoration: none;
     color: #fff;
     text-align: center;
-    display: block;
+    display: inline;
 }
 
-#desktopicons ul li button img {
+#desktopicons ul li button img,
+#desktopicons ul li a img {
     margin: auto;
     width: 50%;
     height: 70px;
