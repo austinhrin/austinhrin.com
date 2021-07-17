@@ -73,10 +73,10 @@ var cmdJSON = [{
 }];
 
 
-var starttext = "C:\\Desktop>Austin Hrin.bat\nRunning Austin Hrin.bat...\n\nHello, my name is Austin Hrin.\n\nI am a Full Stack Web Developer located in Pinellas County Florida.\n\n\nType one of the commands listed below for more information.\nAvailable commands:\nabout\nlinks\nC:\\Desktop>";
+var starttext = "C:\\Desktop>Austin Hrin.bat\nRunning Austin Hrin.bat...\n\nHello, my name is Austin Hrin.\n\nI am a Full Stack Web Developer located in Pinellas County Florida.\n\n\nType one of the commands listed below for more information.\nAvailable commands:\nabout\nC:\\Desktop>";
 
 var abouttext = "About me\n";
-var linksText = "LinkedIn:\nwww.linkedin.com/in/austinhrin\nmore coming soon!\n";
+var linksText = "LinkedIn: https://www.linkedin.com/in/austinhrin \nmore coming soon!\n";
 var typingspeed = 50;
 var numCMDlineWindows = 0;
 
@@ -92,6 +92,7 @@ function about(cmdline, cmdlineInput) {
     }, typingspeed * abouttext.length);
 }
 
+// currently disabled in the newCMD function
 function links(cmdline, cmdlineInput) {
     var cmdlineElem = document.getElementById(cmdline);
     var cmdlineInputElem = document.getElementById(cmdlineInput);
@@ -106,7 +107,9 @@ function links(cmdline, cmdlineInput) {
 
 function commandline(text, cmdline) {
     for (var x = 0; x < text.length; x++) {
+        // get character at x value
         var character = text.charAt(x);
+        // add character to commandline
         addchar(x, character, cmdline);
     }
 }
@@ -155,20 +158,21 @@ function newCMD(text) {
             //cmdLineInputElem.click();
             if (cmdLineInputElem.innerHTML.indexOf('about') > -1) {
                 about(cmdLineText, cmdLineInput);
-            } else if (cmdLineInputElem.innerHTML.indexOf('links') > -1) {
+            } /*else if (cmdLineInputElem.innerHTML.indexOf('links') > -1) {
                 links(cmdLineText, cmdLineInput);
-            }
+            }*/
         }
     });
     cmdLineInputElem.focus();
     // add initial text to command prompt
-    if (text == 'linksText') {
-        text = linksText;
+    if (text == 'starttext') {
+        text = starttext;
     } else if (text == 'abouttext') {
         text = abouttext;
-    } else if (text == 'starttext') {
-        text = starttext;
-    }
+    } /*else if (text == 'linksText') {
+        text = linksText;
+    }*/
+    // add text to commandline
     commandline(text, cmdLineText);
     // Make the DIV element resizeable. Function located in main.js
     resizeElem(document.getElementById(cmdAppElemId));

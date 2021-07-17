@@ -8,7 +8,7 @@ function addTagsLoop(jsonData, parentId, idNum, idFilter) {
     for (var key in jsonData) {
         var newTag = document.createElement(jsonData[key].tagName);
 
-        var tagAttrArray = ['className', 'id', 'innerHTML', 'type', 'onClick', 'contenteditable', 'title'];
+        var tagAttrArray = ['className', 'id', 'innerHTML', 'type', 'onClick', 'contenteditable', 'title', 'style'];
 
         var attrVal = '';
         var newParentId = false;

@@ -15,7 +15,8 @@ var startMenuJson = [{
 }, {
     'tagName': 'button',
     'type': 'button',
-    'onClick': 'newCMD("linksText", null);',
+    'style': 'display: none;',
+    'onClick': 'newCMD("linksText");',
     'innerHTML': 'Links.exe'
 }, {
     'tagName': 'br'
